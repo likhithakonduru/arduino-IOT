@@ -1,0 +1,123 @@
+int redsignal[]={13,10,7,4};//starting from signal 1 to signal 4//
+int yellowsignal[]={12,9,6,3};
+int greensignal[]={11,8,5,2};
+int timeslot;
+void setup()
+{
+  for(int i=0;i<4;i++){
+  pinMode(redsignal[i], OUTPUT);
+  pinMode(yellowsignal[i], OUTPUT);
+  pinMode(greensignal[i], OUTPUT);
+  }
+  Serial.begin(9600);
+}
+void loop()
+{
+  Serial.println("enter the timeslot");
+  while(Serial.available()==0){
+  }
+  timeslot=Serial.parseInt();
+  while(timeslot==1){
+  for(int i=0;i<4;i++){
+  digitalWrite(redsignal[i],LOW);
+  digitalWrite(yellowsignal[i],HIGH);
+  digitalWrite(greensignal[i],LOW);
+  }
+    delay(1000);
+    for(int i=0;i<4;i++){
+    digitalWrite(yellowsignal[i],LOW);
+    }
+  }  while(timeslot==2||4){
+  for(int i=1;i<4;i++){  
+  digitalWrite(redsignal[i],HIGH);
+  digitalWrite(yellowsignal[i],LOW);
+  digitalWrite(greensignal[i],LOW);
+  }
+  digitalWrite(redsignal[0],LOW);
+  digitalWrite(yellowsignal[0],LOW);
+  digitalWrite(greensignal[0],HIGH);
+   
+              delay(3000);
+    
+    digitalWrite(yellowsignal[0],HIGH);
+    digitalWrite(greensignal[0],LOW);
+    
+               delay(1000);
+    
+  digitalWrite(redsignal[0],HIGH);
+  digitalWrite(yellowsignal[0],LOW);
+  digitalWrite(redsignal[1],LOW);  
+  digitalWrite(greensignal[1],HIGH);
+               
+               delay(3000);
+               
+  digitalWrite(yellowsignal[1],HIGH);
+  digitalWrite(greensignal[1],LOW);
+               
+               delay(1000);
+               
+  digitalWrite(redsignal[1],HIGH);
+  digitalWrite(yellowsignal[1],LOW); 
+  digitalWrite(redsignal[2],LOW);
+  digitalWrite(greensignal[2],HIGH); 
+               
+               delay(3000);
+               
+  digitalWrite(yellowsignal[2],HIGH);
+  digitalWrite(greensignal[2],LOW); 
+               
+               delay(1000);
+               
+  digitalWrite(redsignal[2],HIGH);
+  digitalWrite(yellowsignal[2],LOW); 
+  digitalWrite(redsignal[3],LOW);
+  digitalWrite(greensignal[3],HIGH);   
+               
+               delay(3000);
+               
+  digitalWrite(yellowsignal[3],HIGH);
+  digitalWrite(greensignal[3],LOW);  
+               
+               delay(1000);
+    }
+  while(timeslot==3){
+  for(int i=0;i<4;i+=2){
+  digitalWrite(redsignal[i],HIGH);
+  digitalWrite(yellowsignal[i],LOW);
+  digitalWrite(greensignal[i],LOW);
+   }  
+  for(int i=1;i<4;i+=2){
+  digitalWrite(redsignal[i],LOW);
+  digitalWrite(yellowsignal[i],LOW);
+  digitalWrite(greensignal[i],HIGH);
+   }
+             delay(3000);
+    
+  for(int i=1;i<4;i+=2){
+  digitalWrite(redsignal[i],LOW);
+  digitalWrite(yellowsignal[i],HIGH);
+  digitalWrite(greensignal[i],LOW);
+   }
+            delay(1000);
+    
+  for(int i=1;i<4;i+=2){
+  digitalWrite(redsignal[i],HIGH);
+  digitalWrite(yellowsignal[i],LOW);
+  digitalWrite(greensignal[i],LOW);
+   }  
+  for(int i=0;i<4;i+=2){
+  digitalWrite(redsignal[i],LOW);
+  digitalWrite(yellowsignal[i],LOW);
+  digitalWrite(greensignal[i],HIGH);
+   }
+            delay(3000);
+       
+  for(int i=0;i<4;i+=2){
+  digitalWrite(redsignal[i],LOW);
+  digitalWrite(yellowsignal[i],HIGH);
+  digitalWrite(greensignal[i],LOW);
+   } 
+          delay(1000);
+  }
+               }
+               
